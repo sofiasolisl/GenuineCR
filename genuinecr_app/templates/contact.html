@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genuine Costa Rica | Tours, Shuttles and Airport Transfers | Discover Costa Rica as a local</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d66c66b6e6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="body_index">
+    <nav class="navbar navbar-dark bg-dark  navbar-expand-lg  ">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="{{url_for('index')}}">
+                <img src="./static/img/logo3.webp" height="50" class="d-inline-block align-center " alt="logo">
+                <p class="d-inline-block align-center ms-1">Genuine Costa Rica</p> 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-5  " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tours</a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="{{url_for('tours',tour_type=1)}}">Love Nature Experiences</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('tours',tour_type=2)}}">Ocean Adventures</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{url_for('index')+'#shuttle'}}">Shuttles</a>
+                    </li>
+                    
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{url_for('team')}}">The Team</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{url_for('contact')}}">Contact us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-3">
+                    <li class="nav-item align-item-center">
+                        <a class="nav-link"aria-label="Chat on WhatsApp" target=”_blank” href="https://wa.me/50688410333"> <img alt="Chat on WhatsApp" src="./static/img/WhatsAppButtonGreenSmall.svg" />
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link"aria-label="Facebook" target=”_blank” href="https://www.facebook.com/genuine.costa.rica"> <img alt="Facebook" src="./static/img/facebook.svg"/>
+                        </a>
+                    </li> 
+                    <li class="nav-item ">
+                        <a class="nav-link"aria-label="TripAdvisor" target=”_blank” href="https://www.tripadvisor.com/Attraction_Review-g635536-d27451052-Reviews-Genuine_Costa_Rica-Playa_Panama_Gulf_of_Papagayo_Province_of_Guanacaste.html"> <img alt="TripAdvisor" src="./static/img/tripadvisor.png" style="height:36px"/>
+                        </a>
+                    </li>
+                    <li class="nav-item p-1">
+                        <a class="nav-link "aria-label="Google" target=”_blank” href="https://maps.app.goo.gl/KVjRHBFLBCkVSAG98"> <img alt="Google" src="../static/img/google.svg" />
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-md">
+        <h1 class="text-light mt-5">Have any questions? Let's chat!</h1>
+        <div class="mt-4">
+        <p class="text-light"><i class="fa-solid fa-envelope" style="color: #0DCAF0;"></i> <a href="mailto:info@genuinecr.com" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">info@genuinecr.com</a></p>
+        <p class="text-light"><i class="fa-solid fa-phone" style="color: #0DCAF0;"></i> +(506) 8841-0333</p>
+        <p><a class="nav-link"aria-label="Chat on WhatsApp" target=”_blank” href="https://wa.me/50688410333"> <img alt="Chat on WhatsApp" src="./static/img/WhatsAppButtonGreenSmall.svg" />
+        </a></p>
+        </div>
+        <!-- Formulario de contacto -->
+        <form action="{{url_for('contact')}}" method="post" class="text-light mt-5">
+            {% with messages = get_flashed_messages() %}     
+            {% if messages %}                            
+                {% for message in messages %}
+                    <p class="bg-info-subtle text-dark rounded text-center">{{message}}</p>                   
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <h2>Send us a message:</h2>
+            <div class="row g-3 mb-3">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="First name" aria-label="First name" name="fname">
+                </div>
+                <div class="col ">
+                  <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="lname">
+                </div>
+              </div>
+              <form>
+                <div class="row mb-3">
+                  <div class="col">
+                    <input type="email" class="form-control" placeholder="Email" name="email">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                      <textarea  class="form-control" placeholder="Write your message here..."  style="height:100px;" name="message"></textarea>
+                        
+                    </div>
+                  </div>
+              <div class="col-12 text-end">
+                <button type="submit" class="btn btn-primary btn-info">Send</button>
+              </div>
+        </form>
+    </div>
+    <footer >
+        <p class="text-light text-center mb-5">Copywrite © 2024. Designed and developed by <a href="https://www.linkedin.com/in/sofia-solis-loaiciga/" class='link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-offset-3 link-underline-info'style="font-family: Quicksand; color:#ACCCD6; font-size:1.1rem">sofia<span style="color:#A66383">.</span>solis</a></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
